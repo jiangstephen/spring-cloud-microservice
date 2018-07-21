@@ -2,6 +2,7 @@ package com.example.reservationservice;
 
 import java.util.stream.Stream;
 
+import org.apache.catalina.connector.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.cloud.sleuth.sampler.ProbabilityBasedSampler;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
@@ -23,7 +23,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import brave.sampler.Sampler;
+import brave.Span;
+import brave.Tracer;
+import brave.propagation.SamplingFlags;
 
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -31,10 +33,9 @@ import brave.sampler.Sampler;
 public class ReservationServiceApplication {
 
 	
-//	@Bean
-//	ProbabilityBasedSampler sampler(){
-//		return info -> true;
-//	}
+	@Autowired 
+	private Tracer tracer;
+
 	
 
 	@Bean
