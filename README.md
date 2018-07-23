@@ -34,3 +34,4 @@ Please note that I have to use below dependencies
  8. spring SSO
  9. spring zuul proxy
  10. spring api gateway 
+ 11. spring reactive webflux and its client
