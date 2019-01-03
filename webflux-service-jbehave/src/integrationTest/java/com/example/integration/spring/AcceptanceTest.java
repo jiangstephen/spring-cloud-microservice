@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 
 @ContextConfiguration(classes = AcceptanceTestConfiguration.class)
 @ActiveProfiles("tests")
-@DirtiesContext
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface AcceptanceTest {

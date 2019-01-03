@@ -7,11 +7,15 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 import java.time.Duration;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
@@ -85,10 +89,12 @@ class MovieService {
 
 
 @Document
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 class MovieEvent {
+	@Id
 	private String movieId;
 	private Date dateViewed;
 }

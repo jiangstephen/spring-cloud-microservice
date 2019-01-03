@@ -24,7 +24,7 @@ import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class AbstractSpringJBehaveStory extends JUnitStory{
+public abstract class AbstractSpringJBehaveStory extends JUnitStory{
 	
 	private static final int STORY_TIMEOUT = 120;
 	
@@ -36,6 +36,7 @@ public class AbstractSpringJBehaveStory extends JUnitStory{
 		Embedder embedder = new Embedder();
 		embedder.useEmbedderControls(embedderControls());
 		embedder.useMetaFilters(Arrays.asList("-skip"));
+		
 		useEmbedder(embedder);
 	}
 
@@ -43,6 +44,7 @@ public class AbstractSpringJBehaveStory extends JUnitStory{
 	private EmbedderControls embedderControls() {
 		return new EmbedderControls()
 				.doIgnoreFailureInView(true)
+				.useThreads(2)
 				.useStoryTimeoutInSecs(STORY_TIMEOUT);
 	}
 	
