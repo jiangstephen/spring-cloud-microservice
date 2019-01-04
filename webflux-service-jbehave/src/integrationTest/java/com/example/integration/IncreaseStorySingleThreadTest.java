@@ -1,5 +1,5 @@
 package com.example.integration;
 
-public class IncreaseStorySingleThreadTest extends IncreaseStoryTest {
+public class IncreaseStorySingleThreadTest extends IncreaseStoriesTest {
 
 }

@@ -2,7 +2,7 @@ package com.example.integration;
 
 import org.jbehave.core.embedder.Embedder;
 
-public class IncreaseStoryMultiThreadTest extends IncreaseStoryTest {
+public class IncreaseStoryMultiThreadTest extends IncreaseStoriesTest {
 	 
 	public IncreaseStoryMultiThreadTest() {
 		Embedder embedder = configuredEmbedder();

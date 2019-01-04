@@ -58,5 +58,4 @@ public class MovieH2ServiceSteps {
 		TransactionStatus txStatus = null; //TransactionAspectSupport.currentTransactionStatus();
 		LOGGER.info("The current transaction is {}", txStatus);
 	}
-
 }
