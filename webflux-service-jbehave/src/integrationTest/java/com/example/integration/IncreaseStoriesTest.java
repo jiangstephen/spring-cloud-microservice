@@ -22,10 +22,8 @@ public class IncreaseStoriesTest extends AbstractStoriesTest {
     }
  
     @Override
-    protected List<String> storyPaths() {
-        return Arrays.asList("increase.story"
-        		, "increase2.story"
-        		);
+    public List<String> storyPaths() {
+        return Arrays.asList("increase.story", "increase2.story");
     }
  
 }
