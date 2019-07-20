@@ -5,11 +5,13 @@ import org.jbehave.core.annotations.BeforeScenario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Steps
+@Scope("scenario")
 public class TransactionalSteps {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(TransactionalSteps.class);
@@ -18,6 +20,10 @@ public class TransactionalSteps {
 	private PlatformTransactionManager transactionManager;
 
 	private TransactionStatus transaction;
+	
+	public TransactionalSteps() {
+		LOGGER.info("Initializing the transactional steps");
+	}
 	
 	@BeforeScenario
 	public void beforeScenario(){
@@ -30,7 +36,6 @@ public class TransactionalSteps {
 	public void afterScenario(){
 		if(transaction != null){
 			transactionManager.rollback(transaction);
-			//transactionManager.rollback(TransactionAspectSupport.currentTransactionStatus());
 			LOGGER.info("Rollback the transaction {}", transaction);
 		}
 	}
